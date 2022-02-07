@@ -1,7 +1,7 @@
 <?php
 class Personnage
 {
-    private $db;
+    private $id;
     private $pv;
     private $atk;
     private $nom;
@@ -12,14 +12,6 @@ class Personnage
     public function setId( $id)
     {
         $this->id = $id;
-    }
-    public function getDb()
-    {
-        $this->db ;
-    }
-    public function setDb(PDO $db)
-    {
-        $this->db = $db;
     }
     public function getPv()
     {
