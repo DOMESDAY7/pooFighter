@@ -11,18 +11,16 @@
     <script>
         tailwind.config = {
             theme: {
-
                 fontFamily: {
                     'sans': ["incredible"]
                 }
-
             }
         }
     </script>
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
 </head>
 
-<body style="background: radial-gradient(circle, rgba(243,108,3,1) 0%, rgba(228,46,25,1) 32%, rgba(0,0,0,1) 100%); background-repeat: no-repeat; " class="h-screen" >
+<body style="background: radial-gradient(circle, rgba(243,108,3,1) 0%, rgba(228,46,25,1) 32%, rgba(0,0,0,1) 100%); background-repeat: no-repeat; background-attachment:fixed" class="h-screen" >
     <?php
     function chargerClasse($classe)
     {

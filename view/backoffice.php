@@ -205,6 +205,6 @@ $tab = $manager->getAllPersonnage();
 
     <?php } ?>
 
-        <a href="?page=fight" class="border border-black rounded text-[#fddb22] p-3 bg-[#e42e19]">combattre</a>
+        <a href="?page=choose" class="border border-black rounded text-[#fddb22] p-3 bg-[#e42e19]">combattre</a>
 </section>
 <img src="./img/logo.svg" class="fixed top-1/4 left-1/4 translate -z-10 w-1/2">
