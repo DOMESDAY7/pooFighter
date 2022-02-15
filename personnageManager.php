@@ -16,37 +16,52 @@ class personnageManager
         }
         return $personnages;
     }
- 
+
     public function addPersonnage(Personnage $personnage)
     {
-        // var_dump($personnage) ;
-        $nom = $personnage->getNom();
+        $preNom = $personnage->getNom();
+        $nom = htmlspecialchars($preNom);
         $atk = $personnage->getAtk();
         $pv = $personnage->getPv();
-
-        $this->db->query("INSERT INTO `personnages` (`id`, `nom`, `atk`, `pv`) VALUES (NULL, '$nom', '$atk', '$pv')");
+        $req = $this->db->prepare("INSERT INTO `personnages` (`id`, `nom`, `atk`, `pv`) VALUES (:id , :nom , :atk , :pv)");
+        $req->bindValue(":nom", $nom, PDO::PARAM_STR);
+        $req->bindValue(":atk", $atk, PDO::PARAM_INT);
+        $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        $req->bindValue(":id", NULL, PDO::PARAM_STR);
+        $req->execute();
     }
     public function deletePersonnage(int $id)
     {
 
-        $this->db->query("DELETE FROM `personnages` WHERE `personnages`.`id` = $id ");
+        $req = $this->db->prepare("DELETE FROM `personnages` WHERE `personnages`.`id` = :id ");
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
     }
     public function getInfoById(int $id)
     {
 
-        $tabAssoc = $this->db->query("SELECT * FROM `personnages` WHERE `personnages`.`id` = $id ");
+        $req = $this->db->prepare("SELECT * FROM `personnages` WHERE `personnages`.`id` = :id ");
+        $req->bindValue(":id", $id, PDO::PARAM_STR);
+        $req->execute();
+        $tabAssoc = $req;
         $perso = new Personnage($tabAssoc->fetch(PDO::FETCH_ASSOC));
         return $perso;
     }
     public function modfiyPerso(Personnage $replace)
     {
-    
+
         $id = $replace->getId();
-        $nom = $replace->getNom();
+        $preNom = $replace->getNom();
+        $preNom = htmlspecialchars($preNom);
+        $nom = strtolower($preNom);
         $atk = $replace->getAtk();
         $pv = $replace->getPv();
-        $cmd = "UPDATE `personnages` SET `nom` = '$nom',`atk`='$atk',`pv`='$pv' WHERE `personnages`.`id` = $id";
-        $this->db->query($cmd);
+        $cmd = "UPDATE `personnages` SET `nom` = :nom ,`atk`= :atk ,`pv`= :pv WHERE `personnages`.`id` = :id ";
+        $req = $this->db->prepare($cmd);
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->bindValue(":nom", $nom, PDO::PARAM_STR);
+        $req->bindValue(":atk", $atk, PDO::PARAM_INT);
+        $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        $req->execute();
     }
-
 }

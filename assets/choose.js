@@ -5,15 +5,10 @@ let input2 = document.querySelector("#perso2")
 let fightBtn = document.querySelector("#fightBtn")
 combattants1.forEach(combattant => {
     combattant.addEventListener("click", (e) => {
-        // combattant.id
         document.querySelectorAll(".combattant1 .whiteBloc").forEach(element => {
             desactivate(element)
         });
         activate(e.target.childNodes[1])
-
-
-
-
         input1.value = combattant.getAttribute("data-perso")
     })
 });

@@ -1,20 +1,3 @@
-<?php
-
-if (isset($_GET["comfirmDel"])) {
-    $manager->deletePersonnage($_GET["idDelete"]);
-}
-if (isset($_POST["subAdd"])) {
-    $insertPerso = new Personnage($_POST);
-    $manager->addPersonnage($insertPerso);
-}
-if (isset($_POST["subMod"])) {
-    $modPerso = new Personnage($_POST);
-    $manager->modfiyPerso($modPerso);
-}
-$tab = $manager->getAllPersonnage();
-
-
-?>
 <div class="flex flex-col sm:flex-row items-center  justify-evenly my-5 sm:my-[0] sm:h-screen ">
     <div class="flex ">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -44,8 +27,14 @@ $tab = $manager->getAllPersonnage();
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
-                                            <div class="flex-shrink-0 h-10 w-10">
-                                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" alt="">
+                                            <div class="flex-shrink-0 h-10 w-10 border rounded-full overflow-hidden">
+                                                <?php
+                                                $imgPath = "./img/persoImg/" . $value->getNom() . ".png";
+                                                if (file_exists($imgPath)) { ?>
+                                                    <img class="h-10 w-10 object-cover object-top" src=<?= $imgPath ?> alt=<?= $value->getNom(); ?>>
+                                                <?php } else { ?>
+                                                    <img src="./img/persoImg/persoDefault.png" class="h-10 w-10 object-cover object-top" alt="<?= $value->getNom() ?>">
+                                                <?php } ?>
                                             </div>
                                             <div class="ml-4">
                                                 <div class="text-sm font-medium  text-[#fddb22] tracking-widest">
@@ -91,9 +80,7 @@ $tab = $manager->getAllPersonnage();
             <h1 class="text-center text-[#fddb22]">rajouter un personnage</h1>
         </div>
         <form method="POST" action="?page=backoffice" class=" rounded-b  text-center bg-[#660003] px-10 py-5">
-
             <div>
-
                 <input type="text" name="nom" placeholder="nom de votre personnage" class=" rounded mb-5 p-3 outline  outline-4"><br>
                 <input type="number" name="atk" placeholder="point d'attaque" class="border rounded mb-5 p-3 outline  outline-4"><br>
                 <input type="number" name="pv" placeholder="point de vie " class="border rounded mb-5 p-3 outline  outline-4"><br>
@@ -205,6 +192,6 @@ $tab = $manager->getAllPersonnage();
 
     <?php } ?>
 
-        <a href="?page=choose" class="border border-black rounded text-[#fddb22] p-3 bg-[#e42e19]">combattre</a>
+    <a href="?page=choose" class="border border-black rounded text-[#fddb22] p-3 bg-[#e42e19]">combattre</a>
 </section>
 <img src="./img/logo.svg" class="fixed top-1/4 left-1/4 translate -z-10 w-1/2">

@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="./img/logo.svg" type="image/x-icon">
 </head>
 
-<body style="background: radial-gradient(circle, rgba(243,108,3,1) 0%, rgba(228,46,25,1) 32%, rgba(0,0,0,1) 100%); background-repeat: no-repeat; background-attachment:fixed" class="h-screen" >
+<body style="background: radial-gradient(circle, rgba(243,108,3,1) 0%, rgba(228,46,25,1) 32%, rgba(0,0,0,1) 100%); background-repeat: no-repeat; background-attachment:fixed" class="h-screen">
     <?php
     function chargerClasse($classe)
     {
@@ -31,11 +31,15 @@
     $manager = new personnageManager($db);
     if (isset($_GET["page"])) {
         $page = $_GET["page"];
-        $path =  "./view/" . $page . ".php";
-        if (file_exists($path)) {
-            require $path;
-        } else {
-            echo "404";
+        $pathModel = "./model/".$page.".php";
+        if (file_exists($pathModel)) {
+            require $pathModel;
+            $pathView =  "./view/" . $page . ".php";
+            if (file_exists($pathView)) {
+                require $pathView;
+            } else {
+                echo "404";
+            }
         }
     }
     ?>
