@@ -15,7 +15,8 @@
     </div>
 </main>
 <img src="./img/logo.svg" class="fixed top-1/4 left-1/4 translate -z-10 w-1/2">
-<form mehtod="GET" action="?page=fight" class="fightForm">
+<form mehtod="GET"  class="fightForm">
+        <input type="text" name="page" value="fight" >
     <input type="number" id=perso1 placeholder="perso1" name="perso1" class="hidden"><br>
     <input type="number" id=perso2 placeholder="perso2" name="perso2" class="hidden">
 
