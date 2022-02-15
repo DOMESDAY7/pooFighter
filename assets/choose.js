@@ -8,8 +8,9 @@ combattants1.forEach(combattant => {
         document.querySelectorAll(".combattant1 .whiteBloc").forEach(element => {
             desactivate(element)
         });
-        console.log(e.target.childNodes)
-        activate(e.target.childNodes[1])
+        // console.log(e.target.parentNode)
+        e.target.parentNode.childNodes[1].classList.toggle("top-full");
+        e.target.parentNode.childNodes[1].classList.toggle("top-3/4")
         input1.value = combattant.getAttribute("data-perso")
     })
 });
