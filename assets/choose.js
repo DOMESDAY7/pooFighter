@@ -8,6 +8,7 @@ combattants1.forEach(combattant => {
         document.querySelectorAll(".combattant1 .whiteBloc").forEach(element => {
             desactivate(element)
         });
+        console.log(e.target.childNodes)
         activate(e.target.childNodes[1])
         input1.value = combattant.getAttribute("data-perso")
     })
@@ -18,8 +19,9 @@ combattants2.forEach(combattant => {
         document.querySelectorAll(".combattant2 .whiteBloc").forEach(element => {
             desactivate(element)
         });
-        e.target.childNodes[1].classList.toggle("top-full");
-        e.target.childNodes[1].classList.toggle("top-3/4")
+        // console.log(e.target.parentNode)
+        e.target.parentNode.childNodes[1].classList.toggle("top-full");
+        e.target.parentNode.childNodes[1].classList.toggle("top-3/4")
         input2.value = combattant.getAttribute("data-perso")
     })
 });
@@ -45,6 +47,7 @@ fightBtn.addEventListener("click", () => {
 })
 
 function activate(el) {
+    console.log(el)
 
     el.classList.remove("top-full")
     el.classList.add("top-3/4")
