@@ -32,26 +32,29 @@ combattants2.forEach(combattant => {
     })
 });
 fightBtn.addEventListener("click", () => {
-    if (input1.value == "" || input2.value == "") {
-        fightBtn.animate([{
-                transform: "translateX(0px)"
-            },
-            {
-                transform: "translateX(10px)"
-            },
-            {
-                transform: " translateX(-10px) "
-            },
-            {
-                transform: "translateX(0px)"
-            },
-        ], 500)
+    if (input1.value == "" || input2.value == "" || input1.value==input2.value) {
+        refuse()
     } else {
         document.querySelector(".fightForm").submit()
     }
 
 })
 
+function refuse(){
+    fightBtn.animate([{
+        transform: "translateX(0px)"
+    },
+    {
+        transform: "translateX(10px)"
+    },
+    {
+        transform: " translateX(-10px) "
+    },
+    {
+        transform: "translateX(0px)"
+    },
+], 500)
+}
 function activate(el) {
     console.log(el)
 

@@ -51,9 +51,31 @@ class Personnage
             }
         }
     }
+    public function isAlive($victimePv){
+     
+        if (is_null($victimePv) || $victimePv<=0 ) {
+            
+            return true ;
+           
+        } else {
+            return false;
+        }
+    }
 
     public function __construct(array $data)
     {
         $this->hydrate($data);
+    }
+    public function attaque( Personnage $victime,$db){
+        $victime->pv -= $this->atk;
+        $manager =new personnageManager($db);
+        $manager->removePoint($victime);
+       if(Personnage::isAlive($victime->pv) == false){
+        return ("<i>$victime->nom</i> : je n'ai plus que <i>$victime->pv</i> pv<br> mais heuresement je suis toujours en vie...<br>je reviendrais un jour");
+       }else{
+           return "<i>$victime->nom</i> : je suis mort";
+       } 
+       
+        
     }
 }

@@ -1,5 +1,5 @@
 <?php
-class personnageManager
+ class personnageManager
 {
     private $db;
     public function __construct($db)
@@ -64,13 +64,14 @@ class personnageManager
         $req->bindValue(":pv", $pv, PDO::PARAM_INT);
         $req->execute();
     }
-    public function attaque(Personnage $attaquant, Personnage $victime){
-        $idVictime = $victime->getId();
-        $idAttaquant=$attaquant->getId();
+    public function removePoint(Personnage $victime){
         $sql="UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
         $req=$this->db->prepare($sql);
-        $req->bindValue(":pv",$pv,PDO::PARAM_INT);
-        $req->bindValue(":id",$id,PDO::PARAM_INT);
+        $req->bindValue(":pv", $victime->getPv(),PDO::PARAM_INT);
+        $req->bindValue(":id", $victime->getId(),PDO::PARAM_INT);
         $req->execute();
     }
+    
+   
+
 }
