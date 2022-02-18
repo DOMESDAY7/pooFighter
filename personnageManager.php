@@ -64,4 +64,13 @@ class personnageManager
         $req->bindValue(":pv", $pv, PDO::PARAM_INT);
         $req->execute();
     }
+    public function attaque(Personnage $attaquant, Personnage $victime){
+        $idVictime = $victime->getId();
+        $idAttaquant=$attaquant->getId();
+        $sql="UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
+        $req=$this->db->prepare($sql);
+        $req->bindValue(":pv",$pv,PDO::PARAM_INT);
+        $req->bindValue(":id",$id,PDO::PARAM_INT);
+        $req->execute();
+    }
 }

@@ -3,6 +3,8 @@ let combattants2 = document.querySelectorAll(".combattant2>[data-perso]");
 let input1 = document.querySelector("#perso1")
 let input2 = document.querySelector("#perso2")
 let fightBtn = document.querySelector("#fightBtn")
+let attaquant = document.querySelector(".attaquant")
+let victime = document.querySelector(".victime")
 combattants1.forEach(combattant => {
     combattant.addEventListener("click", (e) => {
         document.querySelectorAll(".combattant1 .whiteBloc").forEach(element => {
@@ -11,6 +13,7 @@ combattants1.forEach(combattant => {
         // console.log(e.target.parentNode)
         e.target.parentNode.childNodes[1].classList.toggle("top-full");
         e.target.parentNode.childNodes[1].classList.toggle("top-3/4")
+        attaquant.innerHTML=combattant.getAttribute("data-name")
         input1.value = combattant.getAttribute("data-perso")
     })
 });
@@ -23,6 +26,8 @@ combattants2.forEach(combattant => {
         // console.log(e.target.parentNode)
         e.target.parentNode.childNodes[1].classList.toggle("top-full");
         e.target.parentNode.childNodes[1].classList.toggle("top-3/4")
+        console.log(victime)
+        victime.innerHTML=combattant.getAttribute("data-name")
         input2.value = combattant.getAttribute("data-perso")
     })
 });
