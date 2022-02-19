@@ -35,12 +35,7 @@
 
 <body style="background: radial-gradient(circle, rgba(243,108,3,1) 0%, rgba(228,46,25,1) 32%, rgba(0,0,0,1) 100%); background-repeat: no-repeat; background-attachment:fixed" class="h-screen">
     <?php
-    function chargerClasse($classe)
-    {
-        require  $classe . '.php';
-    }
-    spl_autoload_register('chargerClasse');
-    $db = new PDO('mysql:host=localhost;dbname=poo_sgbd', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    require "loadClass.php";
     $manager = new personnageManager($db);
     if (isset($_GET["page"])) {
         $page = $_GET["page"];

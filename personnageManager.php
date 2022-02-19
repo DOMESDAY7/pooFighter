@@ -2,6 +2,14 @@
 class personnageManager
 {
     private $db;
+    public function getDb()
+    {
+        return $this->db ;
+    }
+    public function setDb(int $db)
+    {
+        $this->db = $db;
+    }
     public function __construct($db)
     {
         $this->db = $db;
@@ -72,10 +80,10 @@ class personnageManager
         $req->bindValue(":pv", $pv, PDO::PARAM_INT);
         $req->execute();
     }
-    public function removePoint(Personnage $victime)
+    public static function updatePv(Personnage $victime)
     {
         $sql = "UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
-        $req = $this->db->prepare($sql);
+        $req = personnageManager::getDb()->prepare($sql);
         $req->bindValue(":pv", $victime->getPv(), PDO::PARAM_INT);
         $req->bindValue(":id", $victime->getId(), PDO::PARAM_INT);
         $req->execute();

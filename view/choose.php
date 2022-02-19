@@ -76,7 +76,7 @@
                     </button>
                 </div>
 
-                <div class="h-full flex flex-col py-6 bg-[#660003] shadow-xl transform ease-in-out duration-500 sm:duration-700 translate-x-full " id="modal"> 
+                <div class="h-full flex flex-col py-6 bg-[#660003] shadow-xl transform ease-in-out duration-500 sm:duration-700 translate-x-full  border-l-8 border-[#fddb22]" id="modal"> 
                     <!-- la -->
                     <div class="px-4 sm:px-6">
                         <h2 class="text-lg font-medium text-[#fddb22] text-center" id="slide-over-title">regeneration de personnage</h2>
@@ -90,7 +90,8 @@
                             <br>
                             <form method="POST" class=" text-center flex flex-col self-center justify-center ">
 
-                                <input type="number" name="pv" placeholder="point de vie a regenerer" class="border rounded mb-5 p-3 outline  text-center outline-4" min="0"><br>
+                                <input type="number" name="pv" placeholder="point de vie a regenerer" class="border rounded mb-5 p-3 outline  text-center outline-4" min="0" id=pvRegen><br>
+                                <input type="number" id="idRegen">
                                 <button type="button" class="text-center  block mt-10  border border-black rounded text-[#fddb22] p-3 bg-[#e42e19] shinyBtn custom-btn justify-center self-center" id="regenerer" style="width:200px; margin:unset">regenerer un personnage</button>
 
                             </form>

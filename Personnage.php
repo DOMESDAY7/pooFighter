@@ -69,7 +69,7 @@ class Personnage
     public function attaque( Personnage $victime,$db){
         $victime->pv -= $this->atk;
         $manager =new personnageManager($db);
-        $manager->removePoint($victime);
+        $manager->updatePv($victime);
        if(Personnage::isAlive($victime->pv) == false){
         return ("<i>$victime->nom</i> : je n'ai plus que <i>$victime->pv</i> pv<br> mais heuresement je suis toujours en vie...<br>je reviendrais un jour");
        }else{
