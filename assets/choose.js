@@ -5,6 +5,30 @@ let input2 = document.querySelector("#perso2")
 let fightBtn = document.querySelector("#fightBtn")
 let attaquant = document.querySelector(".attaquant")
 let victime = document.querySelector(".victime")
+let modal =document.querySelector("#modal");
+let bgModal = document.querySelector("#bgModal")
+let cache = document.querySelector("[role='dialog']")
+let btnSlide = document.querySelector("#btnSlide")
+let closeModal = document.querySelector("#closeModal")
+btnSlide.addEventListener("click",showModal)
+closeModal.addEventListener("click",hideModal)
+function showModal(){
+    cache.classList.toggle("hidden")
+    modal.classList.toggle("translate-x-full")
+    modal.classList.toggle("translate-x-0")
+    bgModal.classList.toggle("opacity-100")
+}
+
+function hideModal(){
+    cache.classList.toggle("hidden")
+    modal.classList.toggle("translate-x-full")
+    modal.classList.toggle("translate-x-0")
+    bgModal.classList.toggle("opacity-100")
+}
+
+
+
+
 combattants1.forEach(combattant => {
     combattant.addEventListener("click", (e) => {
         document.querySelectorAll(".combattant1 .whiteBloc").forEach(element => {

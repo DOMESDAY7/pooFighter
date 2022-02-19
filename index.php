@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet</title>
+    <title>Les indestructibles</title>
     <link rel="stylesheet" href="./assets/button.css">
     <script src="./assets/3.0.18"></script>
     <script>
@@ -21,6 +21,14 @@
     <style>
         i{
             color:#f44336;
+        }
+        .regenerationArea .combattant{
+            height:5rem;
+            width: 5rem;
+
+        }
+        .containerAll .stat{
+            display: none;
         }
     </style>
 </head>

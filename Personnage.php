@@ -9,7 +9,7 @@ class Personnage
     {
         return $this->id ;
     }
-    public function setId( $id)
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -17,7 +17,7 @@ class Personnage
     {
         return $this->pv;
     }
-    public function setPv( $pv)
+    public function setPv( int $pv)
     {
         $this->pv = $pv;
     }
@@ -25,7 +25,7 @@ class Personnage
     {
         return $this->atk;
     }
-    public function setAtk( $atk)
+    public function setAtk( int $atk)
     {
         $this->atk = $atk;
     }
@@ -33,7 +33,7 @@ class Personnage
     {
         return $this->nom;
     }
-    public function setNom( $nom)
+    public function setNom( string $nom)
     {
         $this->nom = $nom;
     }
@@ -73,7 +73,7 @@ class Personnage
        if(Personnage::isAlive($victime->pv) == false){
         return ("<i>$victime->nom</i> : je n'ai plus que <i>$victime->pv</i> pv<br> mais heuresement je suis toujours en vie...<br>je reviendrais un jour");
        }else{
-           return "<i>$victime->nom</i> : je suis mort";
+           return "<i>$victime->nom</i> :j'ai <i>0</i> pv ...☠️";
        } 
        
         

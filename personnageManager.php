@@ -1,13 +1,11 @@
 <?php
- class personnageManager
+class personnageManager
 {
     private $db;
     public function __construct($db)
     {
         $this->db = $db;
     }
-
-
     public function getAllPersonnage()
     {
         $query = $this->db->query("SELECT * FROM personnages");
@@ -25,8 +23,18 @@
         $pv = $personnage->getPv();
         $req = $this->db->prepare("INSERT INTO `personnages` (`id`, `nom`, `atk`, `pv`) VALUES (:id , :nom , :atk , :pv)");
         $req->bindValue(":nom", $nom, PDO::PARAM_STR);
-        $req->bindValue(":atk", $atk, PDO::PARAM_INT);
-        $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        if ($atk < 0) {
+            $atk = 0;
+            $req->bindValue(":atk", $atk, PDO::PARAM_INT);
+        } else {
+            $req->bindValue(":atk", $atk, PDO::PARAM_INT);
+        }
+        if ($pv < 0) {
+            $pv = 0;
+            $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        } else {
+            $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        }
         $req->bindValue(":id", NULL, PDO::PARAM_STR);
         $req->execute();
     }
@@ -64,14 +72,26 @@
         $req->bindValue(":pv", $pv, PDO::PARAM_INT);
         $req->execute();
     }
-    public function removePoint(Personnage $victime){
-        $sql="UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
-        $req=$this->db->prepare($sql);
-        $req->bindValue(":pv", $victime->getPv(),PDO::PARAM_INT);
-        $req->bindValue(":id", $victime->getId(),PDO::PARAM_INT);
+    public function removePoint(Personnage $victime)
+    {
+        $sql = "UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
+        $req = $this->db->prepare($sql);
+        $req->bindValue(":pv", $victime->getPv(), PDO::PARAM_INT);
+        $req->bindValue(":id", $victime->getId(), PDO::PARAM_INT);
         $req->execute();
     }
-    
-   
-
+    public function regenerer(Personnage $perso)
+    {
+        $id = $perso->getId();
+        $pv = $perso->getPv();
+        $sql = "UPDATE `personnages` SET `pv`= :pv WHERE `personnages`.`id` = :id  ";
+        $req = $this->db->prepare($sql);
+        if ($pv < 0) {
+            $pv = 0;
+        } else {
+            $req->bindValue(":pv", $pv, PDO::PARAM_INT);
+        }
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+    }
 }
