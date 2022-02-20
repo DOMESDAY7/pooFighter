@@ -30,7 +30,8 @@ function sendData() {
             id: idRegen.value,
             pv: pvRegen.value
         }
-        fetch("./api?q=regene", {
+        console.log(obj)
+        fetch("./api/index.php", {
                 headers: {
                     "Content-Type": "application/json"
                 },

@@ -88,13 +88,13 @@
                                 <?= $combattants ?>
                             </div>
                             <br>
-                            <form method="POST" class=" text-center flex flex-col self-center justify-center ">
+                            <div class=" text-center flex flex-col self-center justify-center ">
 
                                 <input type="number" name="pv" placeholder="point de vie a regenerer" class="border rounded mb-5 p-3 outline  text-center outline-4" min="0" id=pvRegen><br>
                                 <input type="number" id="idRegen">
                                 <button type="button" class="text-center  block mt-10  border border-black rounded text-[#fddb22] p-3 bg-[#e42e19] shinyBtn custom-btn justify-center self-center" id="regenerer" style="width:200px; margin:unset">regenerer un personnage</button>
 
-                            </form>
+                            </div>
                         </div>
                        
                     </div>
